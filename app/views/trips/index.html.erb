@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <h3>Current Trips</h3>
+    <div class="column">
+      
+          <%= month_calendar events: @trips do |date, trips| %>
+            <%= date %>
+
+            <% trips.each do |trip| %>
+              <div>
+                <%= trip.start_time %>
+              </div>
+            <% end %>
+          <% end %>
+        
+   
+    </div>
+  </div>
+</div>

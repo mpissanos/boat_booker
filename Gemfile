@@ -31,6 +31,7 @@ gem 'bourbon'
 gem 'devise'
 gem 'high_voltage'
 gem 'jquery-rails'
+gem "simple_calendar", "~> 2.0"
 group :development do
   gem 'better_errors'
   gem 'rails_layout'
