@@ -26,7 +26,8 @@ group :test do
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
-gem 'bootstrap', '~> 4.0.0'
+gem 'faker'
+gem "bootstrap", ">= 4.1.2"
 gem 'bourbon'
 gem 'devise'
 gem 'high_voltage'
