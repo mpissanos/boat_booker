@@ -42,7 +42,9 @@ before_action :authenticate_user!
     :trip_length,
     :boat_type,
     :price,
-    :passengers)
+    :passengers,
+    client_attributes: [:name, :email, :phone_number]
+    )
   end
 
 end
