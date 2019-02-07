@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 before_action :authenticate_user!
-# before_action :set_user
+
     
   def index
     @trips = Trip.all
@@ -8,6 +8,7 @@ before_action :authenticate_user!
 
   def new
     @trip = Trip.new
+    @trip.build_client
   end
 
   def create

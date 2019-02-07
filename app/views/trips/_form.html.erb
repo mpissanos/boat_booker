@@ -5,9 +5,10 @@
   <%= f.input  :price %>
   <%= f.input  :passengers, collection: 1..10 %>
   <p>Client Information</p>
-    <%= f.simple_fields_for :client do |c| %>
+ 
+    <%= f.simple_fields_for :client do |c| %> 
       <%= c.input :name %>
-      <%= c.input :email%>
+      <%= c.input :email %>
       <%= c.input :phone_number %>
     <% end %>
   <%= f.button :submit %>
