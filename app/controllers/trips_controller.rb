@@ -1,6 +1,6 @@
 class TripsController < ApplicationController
 before_action :authenticate_user!
-
+# before_action :set_user
     
   def index
     @trips = Trip.all
@@ -12,9 +12,10 @@ before_action :authenticate_user!
   end
 
   def create
-    @trip = @user.trip.create(trip_params)
+    @trip = current_user.trips.build(params[:id])
+    
     if @trip.save
-      redirect_to @trip
+      redirect_to new_trip_path
     else
       render 'new'
     end
@@ -31,10 +32,6 @@ before_action :authenticate_user!
   end
 
   private
-
-  def set_user
-    @user = User.find(params[:user_id])
-  end
 
   def trip_params
     params.require(:trip).permit(

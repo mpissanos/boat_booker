@@ -3,15 +3,13 @@
     <h3>Current Trips</h3>
     <div class="column">
       
-          <%= month_calendar events: @trips do |date, trips| %>
-            <%= date %>
-
-            <% trips.each do |trip| %>
-              <div>
-                <%= trip.start_time %>
-              </div>
-            <% end %>
-          <% end %>
+         <% @trips.each do |t|%>
+         <ul>
+          <li>
+            <%= t.passengers %>
+          </li>
+        </ul>
+        <% end %>
           <div>
             <%= link_to "Login", new_user_session_path %>
           </div>
