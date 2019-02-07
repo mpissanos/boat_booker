@@ -1,8 +1,9 @@
-<%# <%= form_for @trip do |f| %>
-  <div>
-    <%= f.text_field :trip_time %>
-    <%= f. %>
-:location
-:trip_length
-:passengers
-  </div> %>
+<%= simple_form_for @trip do |f| %>
+  <%= f.input  :location %>
+  <%= f.input  :trip_length, collection: 1..8 %>
+  <%= f.input  :boat_type  %>
+  <%= f.input  :price %>
+  <%= f.input  :passengers, collection: 1..10 %>
+  <%= f.button :submit %>
+<% end %>
+

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+
   root to: 'trips#index'
   
   namespace :admin do

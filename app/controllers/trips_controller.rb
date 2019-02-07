@@ -5,11 +5,16 @@ class TripsController < ApplicationController
   end
 
   def new
-    @trip = current_user.Trip.build
+    @trip = Trip.new(trip_params)
   end
 
   def create
-    @trip = current_user.Trip.build(trip_params)
+    @trip = Trip.new(trip_params)
+    if @trip.save
+      redirect_to @trip
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -30,7 +35,7 @@ class TripsController < ApplicationController
     :trip_length,
     :boat_type,
     :price,
-    :passenger)
+    :passengers)
   end
 
 end

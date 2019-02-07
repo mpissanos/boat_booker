@@ -19,11 +19,11 @@ puts 'CREATED ADMIN USER: ' << user.email
 
       10.times do
         Trip.create(
-          start_time: Faker::Time.forward(23, :morning),
-          end_time: Faker::Time.forward(23, :evening),
-          location: Faker::TwinPeaks.location,
-          # trip_length: ,
-          boat_type: Faker::Vehicle.model,
+          start_time: 1,
+          end_time: 2,
+          location: "Haulover",
+          trip_length: 1,
+          boat_type: "pontoon",
           price: 100,
           passengers: 10
 
