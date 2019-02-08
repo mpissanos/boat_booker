@@ -23,7 +23,8 @@ before_action :set_user
   end
 
   def show
-    @trip = Trip.find(params[:trip_id])
+    @trip = Trip.find(params[:id])
+    @client = @trip.client
   end
 
   def update
