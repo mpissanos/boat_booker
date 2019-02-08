@@ -1,5 +1,5 @@
 class AddDateToTrips < ActiveRecord::Migration[5.2]
   def change
-    add_column :trips, :date, :datetime
+    add_column :trips, :date, :date
   end
 end

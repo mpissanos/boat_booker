@@ -7,7 +7,8 @@ before_action :set_user
   end
 
   def new
-    @trip = @user.trips.build
+    @trip = Trip.new
+    @trip.build_client
   end
 
   def create
@@ -41,6 +42,7 @@ before_action :set_user
     :boat_type,
     :price,
     :passengers,
+    :date,
     client_attributes: [:name, :email, :phone_number]
     )
   end

@@ -3,5 +3,5 @@ class Trip < ApplicationRecord
   has_one :client
   accepts_nested_attributes_for :client
 
-  validates_presence_of :location, :boat_type, :price,:passengers, :date
+  validates_presence_of :location, :boat_type, :price, :passengers
 end

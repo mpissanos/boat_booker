@@ -1,3 +1,10 @@
+<%# Add links to show, edit, and delete each trip %>
+
+<%# Add calender that updates as new entries are made %>
+
+
+
+
 <div class="container">
   <div class="row">
     <h3>Current Trips</h3>
@@ -6,7 +13,7 @@
          <% @trips.each do |t|%>
          <ul>
           <li>
-            <%= t.boat_type%>
+            <%= t.client.name%>
           </li>
         </ul>
         <% end %>

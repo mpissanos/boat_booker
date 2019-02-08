@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_02_07_221921) do
     t.datetime "updated_at", null: false
     t.datetime "start_time"
     t.time "end_time"
-    t.datetime "date"
+    t.date "date"
   end
 
   create_table "users", force: :cascade do |t|
