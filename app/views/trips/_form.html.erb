@@ -1,5 +1,7 @@
 <%= simple_form_for @trip do |f| %>
+  <%=f.input   :date, as: :date, html5: true  %>
   <%= f.input  :location %>
+
   <%= f.input  :trip_length, collection: 1..8 %>
   <%= f.input  :boat_type  %>
   <%= f.input  :price %>

@@ -1,23 +1,23 @@
 class TripsController < ApplicationController
 before_action :authenticate_user!
-# before_action :set_user
+before_action :set_user
     
   def index
-    @trips = Trip.all
+    @trips = @user.trips
   end
 
   def new
-    @trip = Trip.new
-    @trip.build_client
+    @trip = @user.trips.build
   end
 
   def create
-    @trip = current_user.trips.build(params[:id])
+    @trip = @user.trips.build(trip_params)
     
-    if @trip.save
-      redirect_to new_trip_path
+    
+    if @trip.save!
+      redirect_to trips_path
     else
-      render 'new'
+      render 'trips/new'
     end
   end
 
@@ -43,6 +43,10 @@ before_action :authenticate_user!
     :passengers,
     client_attributes: [:name, :email, :phone_number]
     )
+  end
+
+  def set_user
+    @user = current_user
   end
 
 end
