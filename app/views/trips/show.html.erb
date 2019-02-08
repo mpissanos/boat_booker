@@ -1,10 +1,13 @@
 <%# #Create a page that displays all of a given trips details %>
- 
-  <%= @trip.date%>
-  <%= @trip.location%>
-  <%= @trip.trip_length%>
-  <%= @trip.boat_type%>
-  <%= @trip.price%>
-  <%= @trip.passengers%>
- 
-  <%= @client.name %>
+
+
+  <ul>
+    <li> Date - <%= @trip.date %> </li>
+    <li> Location - <%= @trip.location %> </li>
+    <li> Trip Length - <%= @trip.trip_length %> </li>
+    <li> Boat Type - <%= @trip.boat_type %> </li>
+    <li> Price - <%= @trip.price %> </li>
+    <li> Passengers - <%= @trip.passengers %> </li>
+  </ul>
+
+  <%# Client info %>

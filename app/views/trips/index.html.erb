@@ -13,16 +13,19 @@
          <% @trips.each do |t|%>
          <ul>
           <li>
-            <%= t.client.name%>
-            <%= link_to "#{t.client.name}", trip_path(t) %>
+            <%= link_to "#{t.date} - #{t.client.name}", trip_path(t) %>
           </li>
         </ul>
         <% end %>
           <div>
+            <% if !user_signed_in? %>
             <%= link_to "Login", new_user_session_path %>
+            <% end %>
           </div>
           <div>
-          <%= link_to "logout", destroy_user_session_path %>
+          <% if user_signed_in? %>
+          <%= link_to "Logout", destroy_user_session_path %>
+          <% end %>
           </div>
         
    
