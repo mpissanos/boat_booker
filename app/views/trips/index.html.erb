@@ -8,14 +8,20 @@
 <div class="container">
   <div class="row">
     <h3>Current Trips</h3>
-    <div class="column">
-      <% @trips.each do |t|%>
+    <div>
+      
+    <%= month_calendar(date: :starts_at) do |date| %>
+      <%= date %>
+    <% end %>
+        
+      
+      <% @trips.each do |t|%> %>
         <ul>
-          <li>
+          <li> 
             <%= link_to "#{t.date}", trip_path(t) %>
           </li>
-        </ul>
-      <% end %>
+        </ul> 
+      <% end %>%
       <div>
         <% if !user_signed_in? %>
         <%= link_to "Login", new_user_session_path %>

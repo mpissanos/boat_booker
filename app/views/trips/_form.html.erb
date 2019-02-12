@@ -1,11 +1,12 @@
 <%= simple_form_for @trip do |f| %>
   <%= f.input   :date, as: :date  %>
   <%= f.input  :location %>
-
+  
   <%= f.input  :trip_length, collection: 1..8 %>
   <%= f.input  :boat_type  %>
   <%= f.input  :price %>
   <%= f.input  :passengers, collection: 1..10 %>
+  <%= f.association :client %>
   <p>Client Information</p>
  
     <%= f.simple_fields_for :client do |c| %> 

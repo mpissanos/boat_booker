@@ -3,7 +3,7 @@ before_action :authenticate_user!
 before_action :set_user
     
   def index
-    @trips = @user.trips
+    @trips = @user.trips.all
   end
 
   def new
