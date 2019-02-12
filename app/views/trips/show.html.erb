@@ -1,8 +1,6 @@
-<%# #Create a page that displays all of a given trips details %>
 
-
+<h2><%= "#{@trip.date}" %></h2>
   <ul>
-    <li> Date - <%= @trip.date %> </li>
     <li> Location - <%= @trip.location %> </li>
     <li> Trip Length - <%= @trip.trip_length %> </li>
     <li> Boat Type - <%= @trip.boat_type %> </li>
@@ -10,4 +8,12 @@
     <li> Passengers - <%= @trip.passengers %> </li>
   </ul>
 
-  <%# Client info %>
+<h2> Client Info </h2>
+  <ul>
+    <li><%= @client.name %></li>
+    <li><%= @client.email %></li>
+    <li><%= @client.phone_number %></li>
+  </ul>
+
+  <%= link_to "Edit", edit_trip_path(@trip) %>
+  <%= link_to "Delete", @trip, :method => :delete, :confirm => "Are you sure ?"%>

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?
   has_many :trips
-  has_one :clients, through: :trips
+  has_many :clients, through: :trips
   # accepts_nested_attributes_For :trips
 
   devise :database_authenticatable, :registerable,

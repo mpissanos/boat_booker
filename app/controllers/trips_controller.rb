@@ -7,16 +7,16 @@ before_action :set_user
   end
 
   def new
-    @trip = Trip.new
-    @trip.build_client
+    @trip = @user.trips.build
+    @client = @trip.build_client
+    
+
   end
 
   def create
-    @trip = @user.trips.build(trip_params)
-    
-    
-    if @trip.save!
-      redirect_to trips_path
+    @trip = @user.trips.create(trip_params)
+    if @trip.save
+      redirect_to trips_path(@trip)
     else
       render 'trips/new'
     end
@@ -27,11 +27,34 @@ before_action :set_user
     @client = @trip.client
   end
 
+  def edit
+    @trip = Trip.find(params[:id])
+  end
+  
   def update
+    @trip = Trip.find(params[:id])
+      if @trip.update_attributes(trip_params)
+        flash[:success] = "Object was successfully updated"
+        redirect_to @trip
+      else
+        flash[:error] = "Something went wrong"
+        render 'edit'
+      end
   end
+  
 
-  def delete
+  def destroy
+    @trip = Trip.find(params[:id])
+    @trip.destroy
+    if @trip.destroy 
+      flash[:success] = 'Object was successfully deleted.'
+      redirect_to trips_url
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to trips_url
+    end
   end
+  
 
   private
 

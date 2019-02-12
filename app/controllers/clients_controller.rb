@@ -9,9 +9,9 @@ def new
 end
 
 def create
-  @trip = Trip.find(params[:trip_id])
-  @client = @trip.clients.create(client_params)
-  if @client.save
+  
+  @client = Client.create(client_params)
+  if @client.save!
     flash[:success] = "Object successfully created"
     redirect_to @client
   else
@@ -20,9 +20,14 @@ def create
   end
 end
 
+def show
+  @client = Client.find(params[:id])
+end
+
+
 def destroy
   @client = Client.find(params[:id])
-  if @client.destroy
+  if @client.destroy!
     flash[:success] = 'Object was successfully deleted.'
     redirect_to clients_url
   else

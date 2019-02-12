@@ -37,6 +37,7 @@ group :development do
   gem 'better_errors'
   gem 'rails_layout'
   gem 'spring-commands-rspec'
+  gem 'binding_of_caller'
 end
 
 group :test do
