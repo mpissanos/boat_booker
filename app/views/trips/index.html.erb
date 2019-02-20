@@ -10,18 +10,24 @@
     <h3>Current Trips</h3>
     <div>
       
-    <%= month_calendar(date: :starts_at) do |date| %>
+    <%= month_calendar events: @trips do |date, trips| %>
       <%= date %>
+
+      <% trips.each do |trip| %>
+      <div>
+        <%= trip.date %>
+      </div>
+      <% end %>
     <% end %>
         
       
-      <% @trips.each do |t|%> %>
+      <% @trips.each do |t|%> 
         <ul>
           <li> 
             <%= link_to "#{t.date}", trip_path(t) %>
           </li>
         </ul> 
-      <% end %>%
+      <% end %>
       <div>
         <% if !user_signed_in? %>
         <%= link_to "Login", new_user_session_path %>
