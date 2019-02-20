@@ -6,7 +6,7 @@ class User < ApplicationRecord
   # accepts_nested_attributes_For :trips
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:facebook]
 
          
          

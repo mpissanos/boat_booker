@@ -26,3 +26,11 @@
       <% end -%>
   <% end %>
 </div>
+
+  <form method="get" action="LOGIN_TYPE">
+    <input type="hidden" name="app_id" value="YOUR_APP_ID">
+    <input type="hidden" name="redirect" value="YOUR_REDIRECT_URL">
+    <input type="hidden" name="state" value="YOUR_CSRF_TOKEN">
+    <input type="hidden" name="fbAppEventsEnabled" value=true>
+    <button type="submit">Login</button>
+  </form>

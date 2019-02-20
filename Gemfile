@@ -20,6 +20,8 @@ gem 'high_voltage'
 gem 'jquery-rails'
 gem "simple_calendar", "~> 2.0"
 gem 'american_date'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
