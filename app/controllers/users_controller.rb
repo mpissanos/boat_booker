@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+    @user
     unless current_user.admin?
       unless @user == current_user
         redirect_to root_path, :alert => "Access denied."

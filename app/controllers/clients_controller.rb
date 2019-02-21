@@ -9,7 +9,6 @@ def new
 end
 
 def create
-  
   @client = Client.create(client_params)
   if @client.save!
     flash[:success] = "Object successfully created"
@@ -21,7 +20,6 @@ def create
 end
 
 def show
-  
 end
 
 

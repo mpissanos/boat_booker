@@ -1,0 +1,6 @@
+<%= simple_form_for @boat do |f| %>
+<%= f.imput :type, colection: [:pontoon, :yacht, :speedboat, :john_boat]%>
+<%= f.input :name %>
+<%= f.input :capacity , collection: 1..10%>
+<%= f.submit %>
+<% end %>

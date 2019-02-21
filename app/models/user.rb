@@ -3,6 +3,7 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
   has_many :trips
   has_many :clients, through: :trips
+  has_many :boats, through: :trips
   
   # accepts_nested_attributes_For :trips
 
