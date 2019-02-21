@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-
+before_action :set_client, only: [:show, :destroy]
 def index
   @clients = Client.all
 end
@@ -21,12 +21,12 @@ def create
 end
 
 def show
-  @client = Client.find(params[:id])
+  
 end
 
 
 def destroy
-  @client = Client.find(params[:id])
+  
   if @client.destroy!
     flash[:success] = 'Object was successfully deleted.'
     redirect_to clients_url
@@ -39,8 +39,11 @@ end
 
 private
 
-def client_params
-  params.require(:client).permit(:name, :email, :phone_number)
-end
+  def client_params
+    params.require(:client).permit(:name, :email, :phone_number)
+  end
 
+  def set_client
+    @client = Client.find(params[:id])
+  end
 end

@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
 before_action :authenticate_user!
 before_action :set_user
+before_action :set_trip, only: [:destroy, :edit, :show, :update]
     
   def index
     @trips = @user.trips.all
@@ -9,8 +10,6 @@ before_action :set_user
   def new
     @trip = @user.trips.build
     @client = @trip.build_client
-    
-
   end
 
   def create
@@ -23,17 +22,17 @@ before_action :set_user
   end
 
   def show
-    @trip = Trip.find(params[:id])
     @client = @trip.client
   end
 
   def edit
-    @trip = Trip.find(params[:id])
+    if @trip.user != current_user
+      redirect_to trips_path
+    end
   end
   
   def update
-    @trip = Trip.find(params[:id])
-      if @trip.update_attributes(trip_params)
+    if @trip.update_attributes(trip_params)
         flash[:success] = "Object was successfully updated"
         redirect_to @trip
       else
@@ -44,7 +43,6 @@ before_action :set_user
   
 
   def destroy
-    @trip = Trip.find(params[:id])
     @trip.destroy
     if @trip.destroy 
       flash[:success] = 'Object was successfully deleted.'
@@ -73,6 +71,10 @@ before_action :set_user
 
   def set_user
     @user = current_user
+  end
+
+  def set_trip
+    @trip = Trip.find(params[:id])
   end
 
 end
