@@ -10,7 +10,7 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
   def new
     @trip = @user.trips.build
     @client = @trip.build_client
-    @boats = Boat.all
+    @boats = @user.boats.all
   end
 
   def create
@@ -62,11 +62,11 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
     :trip_time,
     :location,
     :trip_length,
-    :boat_type,
     :price,
     :passengers,
     :date,
     client_attributes: [:name, :email, :phone_number],
+    
     )
   end
 

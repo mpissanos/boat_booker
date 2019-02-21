@@ -4,7 +4,6 @@ class CreateBoats < ActiveRecord::Migration[5.2]
       t.string :type
       t.string :name
       t.integer :capacity
-      t.integer :trip_id
       t.integer :user_id
      
 

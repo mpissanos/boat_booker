@@ -1,4 +1,5 @@
 class BoatsController < ApplicationController
+  before_action :set_user
   before_action :set_boat, only: [:show, :destroy, :edit]
 
   def index
@@ -6,12 +7,12 @@ class BoatsController < ApplicationController
   end
 
   def new 
-    @boat = Boat.new
+    @boat = @user.boats.build
   end
 
   def create
     @boat = Boat.create(boat_params)
-    if @boat.save!
+    if @boat.save
       redirect_to boat_path(@boat)
     else
       flash[:error] = "Something went wrong"
@@ -23,7 +24,8 @@ class BoatsController < ApplicationController
     if @boat.user != @user
       redirect_to boats_path
     end
-  en
+  end
+  
 
 
   private

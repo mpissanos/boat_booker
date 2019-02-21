@@ -19,8 +19,9 @@ Rails.application.routes.draw do
 
   resources :trips do
     resources :clients 
+  end
 
     resources :clients, only: [:index, :show]
-  end
+  
 
 end
