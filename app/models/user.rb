@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :trips
   has_many :boats, inverse_of: :user
   has_many :clients, through: :trips
-  has_many :trips, through: :boats
+  
   
   
   # accepts_nested_attributes_For :trips

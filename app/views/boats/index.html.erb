@@ -1,7 +1,8 @@
-<%= @boats.each do |b| %>
-  <ul>
+
+<ul>
+  <%= @boats.each do |b| %>
     <li>Boat Type - <%= b.boat_type %></li>
     <li>Boat Name - <%= b.name %></li>
     <li>Capacity - <%= b.capacity %></li>
-  </ul>
-<% end %>
+  <% end %>
+</ul>

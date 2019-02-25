@@ -1,5 +1,3 @@
-
-
 <%= simple_form_for @trip do |f| %>
   <%= f.input   :date, as: :date  %>
   <%= f.input  :location %>
@@ -9,7 +7,7 @@
 
   
 
-  <%= f.input :boat, collection: @boats, input_html: { multiple: false } %>
+  <%= f.input :boat_id, collection: @boats, input_html: { multiple: false, id: :boat_id } %>
   
   <p>Client Information</p>
  

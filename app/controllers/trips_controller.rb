@@ -2,6 +2,7 @@ class TripsController < ApplicationController
 before_action :authenticate_user!
 before_action :set_user
 before_action :set_trip, only: [:destroy, :edit, :show, :update]
+
     
   def index
     @trips = Trip.all
@@ -29,6 +30,8 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
   def edit
     if @trip.user != current_user
       redirect_to trips_path
+    else
+      @boats = @user.boats
     end
   end
   
@@ -65,6 +68,7 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
     :price,
     :passengers,
     :date,
+    :boat_id,
     client_attributes: [:name, :email, :phone_number],
     )
   end
@@ -76,5 +80,6 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
   def set_trip
     @trip = Trip.find(params[:id])
   end
+
 
 end

@@ -8,6 +8,10 @@ class Trip < ApplicationRecord
   validates_presence_of :location, :trip_length, :price, :passengers
 
   # scope method for recent trips
+
+  # def self.set_boat_id
+
+  # end
   
 
   def self.recent_trips(limit)
