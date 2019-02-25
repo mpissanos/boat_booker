@@ -1,5 +1,6 @@
 class ClientsController < ApplicationController
 before_action :set_client, only: [:show, :destroy]
+
 def index
   @clients = Client.all
 end
@@ -24,7 +25,6 @@ end
 
 
 def destroy
-  
   if @client.destroy!
     flash[:success] = 'Object was successfully deleted.'
     redirect_to clients_url

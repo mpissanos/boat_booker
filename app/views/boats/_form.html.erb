@@ -1,6 +1,6 @@
 <%= simple_form_for @boat do |f| %>
-<%= f.imput :type %>
-<%= f.input :name %>
-<%= f.input :capacity , collection: 1..10%>
-<%= f.submit %>
+    <%= f.input :boat_type %>
+    <%= f.input :name %>
+    <%= f.input :capacity , collection: 1..10%>
+    <%= f.button :submit %>
 <% end %>

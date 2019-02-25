@@ -1,8 +1,7 @@
 class Trip < ApplicationRecord
   extend SimpleCalendar
-  
-  belongs_to :user
   belongs_to :boat
+  belongs_to :user
   has_one :client, dependent: :destroy
   accepts_nested_attributes_for :client
 

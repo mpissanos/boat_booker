@@ -4,18 +4,18 @@ before_action :set_user
 before_action :set_trip, only: [:destroy, :edit, :show, :update]
     
   def index
-    @trips = @user.trips.all
+    @trips = Trip.all
   end
 
   def new
     @trip = @user.trips.build
     @client = @trip.build_client
-    @boats = @user.boats.all
+    @boats = Boat.all
   end
 
   def create
     @trip = @user.trips.create(trip_params)
-    if @trip.save
+    if @trip.save!
       redirect_to trip_path(@trip)
     else
       render 'trips/new'
@@ -66,7 +66,6 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
     :passengers,
     :date,
     client_attributes: [:name, :email, :phone_number],
-    
     )
   end
 

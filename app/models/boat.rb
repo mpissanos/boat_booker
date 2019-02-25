@@ -1,8 +1,5 @@
 class Boat < ApplicationRecord
- 
-  belongs_to :user
-  has_many :trips, optional: true
+  belongs_to :user, inverse_of: :boats
+  has_many :trips
   has_many :clients, through: :trips
-  accepts_nested_attributes_for :trips
-
 end
