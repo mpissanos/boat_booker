@@ -1,8 +1,10 @@
-
-<ul>
-  <%= @boats.each do |b| %>
-    <li>Boat Type - <%= b.boat_type %></li>
-    <li>Boat Name - <%= b.name %></li>
-    <li>Capacity - <%= b.capacity %></li>
-  <% end %>
-</ul>
+<% @boats.each do |b| %>
+  <h2><%= b.name %></h2>
+  <ul>
+      <li>Type - <%= b.boat_type %></li>
+      <li>Capacity - <%= b.capacity %></li>
+        <div>
+          <%= link_to 'Edit', edit_boat_path(b), :class => "btn btn-primary" %>
+        </div>
+  </ul>
+<% end %>
