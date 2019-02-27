@@ -11,12 +11,12 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
   def new
     @trip = @user.trips.build
     @client = @trip.build_client
-    @boats = Boat.all
+    @boats = @user.boats
   end
 
   def create
     @trip = @user.trips.create(trip_params)
-    if @trip.save!
+    if @trip.save 
       redirect_to trip_path(@trip)
     else
       render 'trips/new'

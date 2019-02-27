@@ -5,7 +5,7 @@ class BoatsController < ApplicationController
  
 
   def index
-    @boats = Boat.all
+    @boats = @user.boats
   end
 
   def new 
@@ -13,7 +13,7 @@ class BoatsController < ApplicationController
   end
 
   def show
-    @boat
+    
   end
 
   def create

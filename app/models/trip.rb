@@ -14,8 +14,12 @@ class Trip < ApplicationRecord
   # end
   
 
-  def self.recent_trips(limit)
-    order("created_at desc").limit(limit)
+  def self.recent_trips
+    order("created_at desc").limit(5)
+  end
+
+  def self.after_today?
+    where("created_at >=?", Time.zone.today.beginning_of_day)
   end
 
 end
