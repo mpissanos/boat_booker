@@ -5,21 +5,7 @@
 
 
 
-<div class="container">
-  <div class="row">
-    <h3>Current Trips</h3>
-    <div>
-      
-    <%= month_calendar events: @trips do |date, trips| %>
-      <%= date %>
-
-      <% trips.each do |trip| %>
-      <div>
-        <%= trip.date %>
-      </div>
-      <% end %>
-    <% end %>
-        
+<div id="calendar"></div>
       
       <% @trips.each do |t|%> 
         <ul>
