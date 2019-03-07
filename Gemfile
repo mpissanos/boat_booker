@@ -22,6 +22,7 @@ gem "simple_calendar", "~> 2.0"
 gem 'american_date'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
