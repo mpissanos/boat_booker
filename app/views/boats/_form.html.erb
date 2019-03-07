@@ -4,3 +4,25 @@
     <%= f.input :capacity , collection: 1..10%>
     <%= f.button :submit %>
 <% end %>
+
+<div id="boatResult">
+  <h2 id="boatName"></h2>
+  <p id="boatType"></p>
+  <p id="boatCapacity"></p>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $('form').submit(function(event) {
+      event.preventDefault()
+      let values = $(this).serialize()
+      let posting = $.post('/boats', values)
+
+      posting.done(function(data) {
+        $("#boatType").text(boat["boat_type"])
+        $("#boatName").text(boat["name"])
+        $("#boatCapacity").text(boat["capacity"])
+      })
+    })
+  })
+</script>

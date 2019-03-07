@@ -6,6 +6,7 @@ class BoatsController < ApplicationController
 
   def index
     @boats = @user.boats
+
   end
 
   def new 
@@ -13,18 +14,15 @@ class BoatsController < ApplicationController
   end
 
   def show
-    
+    respond_to do |format|
+      format.html { render :show  }
+      format.json {render json: @boat}
+    end
   end
 
   def create
     @boat = @user.boats.create(boat_params)
-    if @boat.save!
-      flash[:success] = "Object successfully created"
-      redirect_to boat_path(@boat)
-    else
-      flash[:error] = "Something went wrong"
-      render 'new'
-    end
+    render json: @boat, status: 201
   end
 
   def edit
@@ -34,13 +32,8 @@ class BoatsController < ApplicationController
   end
 
   def update
-    if @boat.update_attributes(boat_params)
-        flash[:success] = "Object was successfully updated"
-        redirect_to @boat
-      else
-        flash[:error] = "Something went wrong"
-        render 'edit'
-      end
+      @boat.update_attributes(boat_params)
+      redirect_to boat_path(@boat)
   end
   
   private
