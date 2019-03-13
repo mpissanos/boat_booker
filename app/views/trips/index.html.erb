@@ -20,8 +20,6 @@
     <tr>
       <th>Date</th>
       <th>Location</th>
-      <th>Start Time</th>
-      <th>End Time</th>
       <th>Boat</th>
       <th colspan="2"></th>
     </tr>
@@ -32,8 +30,6 @@
     <tr>
       <td><%= "#{trip.date}" %></td>
       <td><%= "#{trip.location}" %></td>
-      <td><%= "#{trip.trip_time}"  %></td>
-      <td><%= "#{trip.end_time}"  %></td>
       <td><%= "#{trip.boat.name}" %></td>
       <td><%= link_to 'Edit', edit_trip_path(trip) %>
       </td>

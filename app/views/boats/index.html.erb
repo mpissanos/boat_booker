@@ -1,13 +1,14 @@
 <% @boats.each do |boat| %>
   <h2><%= boat.name %></h2>
   <ul>
-        <div class="edit-btn">
-          <%= link_to 'Edit', edit_boat_path(boat), :class => "btn btn-primary" %>
-        </div>
-        <div id="info-<%= boat.id %>">
-        </div>
-        
-        <button class="more-info-btn" data-id="<%= boat.id %>"> More Info</button>
+    <div class="edit-btn">
+      <%= link_to 'Edit', edit_boat_path(boat), :class => "btn btn-primary" %>
+    </div>
+    <div class="delete-btn">
+      <%= link_to "Delete", boat_path(boat), :class => "btn btn-secondary", data: {:confirm => "Are you sure?"}, method: :delete %>
+    </div>
+    <div id="info-<%= boat.id %>"></div>
+    <button class="more-info-btn" data-id="<%= boat.id %>"> Current Trips</button>
   </ul>
 <% end %>
 
@@ -17,11 +18,8 @@
       let id = $(this).data("id");
       $.get("/boats/" + id , function(data) {
         let boat = data;
-        $("#info-" + id).text(
-           boat["capacity"]
-        )
+        $("#info-" + id).text(boat["trips"][0]["date"])
+      })
     })
   })
-})
 </script>
-

@@ -6,7 +6,10 @@ class BoatsController < ApplicationController
 
   def index
     @boats = @user.boats
-
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @boats }
+    end
   end
 
   def new 
@@ -14,7 +17,11 @@ class BoatsController < ApplicationController
   end
 
   def show
-    render json: @boat, status: 200
+     respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @boat, status: 200 }
+    end
+    
   end
 
   def create
@@ -32,6 +39,17 @@ class BoatsController < ApplicationController
       @boat.update(boat_params)
       redirect_to boats_path
   end
+
+  def destroy
+    if @boat.destroy
+      flash[:success] = 'Object was successfully deleted.'
+      redirect_to boats_url
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to boats_url
+    end
+  end
+  
   
   private
 

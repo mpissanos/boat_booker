@@ -1,5 +1,5 @@
 
-<h2><%= "#{@trip.date}" %></h2>
+<h2>Date - <%= "#{@trip.date}" %></h2>
   <ul>
     
     <li> Location - <%= @trip.location %> </li>
@@ -17,5 +17,5 @@
     <li><%= @client.phone_number %></li>
   </ul>
 
-<div><%= link_to "Edit", edit_trip_path(@trip) %></div>
-<div><%= link_to "Delete", @trip, :method => :delete, :confirm => "Are you sure ?"%></div>
+<div class="btn btn-secondary"><%= link_to "Edit", edit_trip_path(@trip) %></div>
+<div class="btn btn-secondary"><%= link_to "Delete", @trip, :method => :delete, :confirm => "Are you sure ?"%></div>
