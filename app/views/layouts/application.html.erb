@@ -19,17 +19,8 @@
 
     
 <footer class="flex-container">
-    <div>
-    <% if !user_signed_in? %>
-      <%= link_to "Login", new_user_session_path %>
-    <% end %>
-  </div>
-      
-  <div>
-    <% if user_signed_in? %>
-      <%= link_to "Logout", destroy_user_session_path %>
-    <% end %>
-  </div>
+  <br>
+  <small>&copy; 2019 Developed by Manuel Pissanos | <a href="https://github.com/mpissanos/boat_booker">GitHub <i class="fa fa-github"></i></a> </small>
 </footer>
 
   </body>

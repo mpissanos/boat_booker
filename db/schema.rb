@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_08_222515) do
+ActiveRecord::Schema.define(version: 2019_03_13_075131) do
 
   create_table "boats", force: :cascade do |t|
     t.string "boat_type"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_03_08_222515) do
     t.time "start_time"
     t.time "end_time"
     t.date "date"
+    t.boolean "complete", default: false, null: false
   end
 
   create_table "users", force: :cascade do |t|

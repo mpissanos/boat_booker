@@ -2,12 +2,10 @@
 <%# 
 <----- TODO  ---->
 
- -Add links to show, edit, and delete each trip 
+- Add button to mark trip as complete, remove from current trips and add to completed trips
+-- Use AJAX for above
 
- -Add calender that updates as new entries are made 
 
- -Format trip list as a table and  
-  add links to show, edit, and delete each trip 
   %>
 
 <div id="calender-container">
@@ -31,9 +29,9 @@
       <td><%= "#{trip.date}" %></td>
       <td><%= "#{trip.location}" %></td>
       <td><%= "#{trip.boat.name}" %></td>
-      <td><%= link_to 'Edit', edit_trip_path(trip) %>
+      <td><%= link_to 'Edit', edit_trip_path(trip), class: "btn btn-primary" %>
       </td>
-      <td><%= link_to "Delete", trip_path(trip), data: {:confirm => "Are you sure?"}, method: :delete %></td>
+      <td><%= link_to "Delete", trip_path(trip), class: "btn btn-primary", data: {:confirm => "Are you sure?"}, method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
