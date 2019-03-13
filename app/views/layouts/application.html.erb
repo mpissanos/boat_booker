@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Boat Booker" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Boat Booker" %>">
+ 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
@@ -15,5 +16,21 @@
     <main>
        <%= yield %>
     </main>
+
+    
+<footer>
+    <div>
+    <% if !user_signed_in? %>
+      <%= link_to "Login", new_user_session_path %>
+    <% end %>
+  </div>
+      
+  <div>
+    <% if user_signed_in? %>
+      <%= link_to "Logout", destroy_user_session_path %>
+    <% end %>
+  </div>
+</footer>
+
   </body>
 </html>

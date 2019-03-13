@@ -4,7 +4,7 @@ class Trip < ApplicationRecord
   has_one :client, dependent: :destroy
   accepts_nested_attributes_for :client
 
-  validates_presence_of :location, :trip_length, :price, :passengers
+  validates_presence_of :location, :price, :passengers, :start_time, :end_time
 
   # scope method for recent trips
 
@@ -13,8 +13,8 @@ class Trip < ApplicationRecord
   # end
   
 
-  def self.recent_trips
-    order("created_at desc").limit(5)
+  def self.recent_trips(number)
+    order("created_at desc").limit(number)
   end
 
   def self.after_today?

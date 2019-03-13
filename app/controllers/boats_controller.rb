@@ -14,10 +14,7 @@ class BoatsController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.html { render :show  }
-      format.json {render json: @boat}
-    end
+    render json: @boat, status: 200
   end
 
   def create
@@ -32,8 +29,8 @@ class BoatsController < ApplicationController
   end
 
   def update
-      @boat.update_attributes(boat_params)
-      redirect_to boat_path(@boat)
+      @boat.update(boat_params)
+      redirect_to boats_path
   end
   
   private

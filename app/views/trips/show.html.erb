@@ -3,9 +3,10 @@
   <ul>
     
     <li> Location - <%= @trip.location %> </li>
-    <li> Trip Length - <%= @trip.trip_length %> </li>
-    <li> Boat Type - <%= @trip.boat.boat_type %> </li>
-    <li> Price - <%= @trip.price %> </li>
+    <li> Start Time - <%= @trip.start_time %></li>
+    <li> End Time - <%= @trip.end_time %></li>
+    <li> Boat Name - <%= @trip.boat.name %> </li>
+    <li> Price - $<%= @trip.price %> </li>
     <li> Passengers - <%= @trip.passengers %> </li>
   </ul>
 
@@ -16,5 +17,5 @@
     <li><%= @client.phone_number %></li>
   </ul>
 
-  <%= link_to "Edit", edit_trip_path(@trip) %>
-  <%= link_to "Delete", @trip, :method => :delete, :confirm => "Are you sure ?"%>
+<div><%= link_to "Edit", edit_trip_path(@trip) %></div>
+<div><%= link_to "Delete", @trip, :method => :delete, :confirm => "Are you sure ?"%></div>

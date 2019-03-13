@@ -17,8 +17,9 @@
 //= require turbolinks
 //= require moment 
 //= require fullcalendar
+//= require fullcalendar/gcal
 //= require_tree .
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-$('#calendar').fullCalendar({});

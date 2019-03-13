@@ -14,6 +14,7 @@ gem 'simple_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
 gem "bootstrap", ">= 4.1.2"
+gem 'font-awesome-rails'
 gem 'bourbon'
 gem 'devise'
 gem 'high_voltage'

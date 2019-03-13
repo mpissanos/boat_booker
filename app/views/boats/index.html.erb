@@ -1,10 +1,27 @@
-<% @boats.each do |b| %>
-  <h2><%= b.name %></h2>
+<% @boats.each do |boat| %>
+  <h2><%= boat.name %></h2>
   <ul>
-      <li>Type - <%= b.boat_type %></li>
-      <li>Capacity - <%= b.capacity %></li>
-        <div>
-          <%= link_to 'Edit', edit_boat_path(b), :class => "btn btn-primary" %>
+        <div class="edit-btn">
+          <%= link_to 'Edit', edit_boat_path(boat), :class => "btn btn-primary" %>
         </div>
+        <div id="info-<%= boat.id %>">
+        </div>
+        
+        <button class="more-info-btn" data-id="<%= boat.id %>"> More Info</button>
   </ul>
 <% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('.more-info-btn').on('click', function() {
+      let id = $(this).data("id");
+      $.get("/boats/" + id , function(data) {
+        let boat = data;
+        $("#info-" + id).text(
+           boat["capacity"]
+        )
+    })
+  })
+})
+</script>
+

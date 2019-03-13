@@ -6,7 +6,13 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
     
   def index
     @trips = Trip.all
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @trips }
+    end
   end
+
+
 
   def new
     @trip = @user.trips.build
@@ -62,12 +68,12 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
 
   def trip_params
     params.require(:trip).permit(
-    :trip_time,
     :location,
-    :trip_length,
     :price,
     :passengers,
     :date,
+    :start_time,
+    :end_time,
     :boat_id,
     client_attributes: [:name, :email, :phone_number],
     )

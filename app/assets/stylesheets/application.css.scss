@@ -1,11 +1,14 @@
 @import "bootstrap";
 @import "fullcalendar";
+
+
+
  
 .simple_form {
   div.input {
     margin-bottom: 10px;
     clear: both;
-    /* Required for Webkit, but not for Gecko */
+    width: 800;
   }
   label {
     float: left;
@@ -16,7 +19,11 @@
 }
 
 div.boolean, .simple_form input[type='submit'] {
-  margin-left: 120px;
+  margin: auto;
+  width: 50%;
+  border: 3px solid rgb(207, 57, 37);
+  padding: 10px;
+  text-align: center;
 }
 
 div.boolean label {
@@ -69,3 +76,26 @@ label.collection_check_boxes {
   vertical-align: -2px;
   margin-left: 2px;
 }
+
+nav {
+  overflow: auto;
+}
+
+.navbar{ background:rgb(211, 77, 139);}
+.nav-link , .navbar-brand{ color: #d14f4f; cursor: pointer;}
+.nav-link{ margin-right: 1em !important;}
+.nav-link:hover{ background: #c92727; color: #e0c7b0; }
+.navbar-collapse{ justify-content: flex-end;}
+.navbar-toggler{  background:rgb(214, 210, 210) !important;}
+
+.navbar-collapse{
+ justify-content: flex-start;
+}
+
+.calendar-container {
+  margin: auto;
+  width: 50%;
+  border: 3px solid green;
+  padding: 10px;
+}
+
