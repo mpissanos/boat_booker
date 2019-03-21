@@ -1,117 +1,88 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "nav_style";
+@import "simple_form";
 @import "fullcalendar";
+@import "jquery-ui";
 
-$primary-color: rgb(109, 45, 0);
-$primary-bg: rgb(223, 230, 230);
+
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
 
 body {
-  color: $primary-color;
-
-  background: $primary-bg;
-
+  margin: 40px;
+  font-family: 'Open Sans', 'sans-serif';
+  background-color: rgb(209, 202, 202);
+  color: rgb(0, 0, 0);
 }
 
-.flex-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+h1, p {
+  margin: 0 0 1em 0;
+  color: black;
 }
 
- 
-.simple_form {
-  div.input {
-    margin-bottom: 10px;
-    clear: both;
-    width: 800;
-  }
-  label {
+.wrapper {
+  max-width: 940px;
+  margin: 0 20px;
+  display: grid;
+  grid-gap: 10px;
+}
+.ui-dialog-contain{
+    background-color: #BADA55;
+}
+
+
+@media screen and (min-width: 500px) {
+
+  /* no grid support? */
+  .sidebar {
     float: left;
-    width: 100px;
-    text-align: right;
-    margin: 2px 10px;
+    width: 19.1489%;
   }
-}
 
-div.boolean, .simple_form input[type='submit'] {
-  margin: auto;
-  width: 50%;
-  border: 3px solid rgb(207, 57, 37);
-  padding: 10px;
-  text-align: center;
-}
-
-div.boolean label {
-  float: none;
-  margin: 0;
-}
-
-label.collection_radio_buttons {
-  float: none;
-  margin: 0;
-  margin-right: 10px;
-  vertical-align: -2px;
-  margin-left: 2px;
-}
-
-.field_with_errors {
-  background-color: #ff3333;
-}
-
-.simple_form {
-  .error {
-    clear: left;
-    color: black;
-    display: block;
-    margin-left: 120px;
+  .content {
+    float: right;
+    width: 79.7872%;
   }
-  .hint {
-    clear: left;
-    margin-left: 120px;
-    color: #555;
-    display: block;
-    font-style: italic;
+
+  .wrapper {
+    margin: 0 auto;
+    grid-template-columns: 1fr 3fr;
   }
-}
-
-input {
-  &.radio {
-    margin-right: 5px;
-    vertical-align: -3px;
+  
+  .header, .footer {
+    grid-column: 1 / -1;
+    /* needed for the floated layout */
+    clear: both;
   }
-  &.check_boxes {
-    margin-left: 3px;
-    vertical-align: -3px;
+
+}
+
+.wrapper > * {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 100%;
+  /* needed for the floated layout*/
+  margin-bottom: 10px;
+}
+
+/* We need to set the widths used on floated items back to auto, and remove the bottom margin as when we have grid we have gaps. */
+@supports (display: grid) {
+  .wrapper > * {
+    width: auto;
+    margin: 0;
   }
-}
-
-label.collection_check_boxes {
-  float: none;
-  margin: 0;
-  vertical-align: -2px;
-  margin-left: 2px;
-}
-
-nav {
-  overflow: auto;
-}
-
-.navbar{ background:rgb(211, 77, 139);}
-.nav-link , .navbar-brand{ color: #d14f4f; cursor: pointer;}
-.nav-link{ margin-right: 1em !important;}
-.nav-link:hover{ background: #c92727; color: #e0c7b0; }
-.navbar-collapse{ justify-content: flex-end;}
-.navbar-toggler{  background:rgb(214, 210, 210) !important;}
-
-.navbar-collapse{
- justify-content: flex-start;
 }
 
 .calendar-container {
   margin: auto;
   width: 50%;
-  border: 3px solid green;
+  border: 3px solid rgb(0, 0, 0);
   padding: 10px;
 }
 

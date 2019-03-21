@@ -23,50 +23,17 @@
     </tr>
   </thead>
 
-  <tbody id="tripList">
+  <tbody>
   <% @trips.each do |trip|%> 
     <tr>
-      <td><%= "#{trip.date}" %></td>
-      <td><%= "#{trip.location}" %></td>
-      <td><%= "#{trip.boat.name}" %></td>
-      <td><%= link_to 'Edit', edit_trip_path(trip), class: "btn btn-primary" %>
+      <td id="tripDate"><%= "#{trip.date}" %></td>
+      <td id="tripLocation"><%= "#{trip.location}" %></td>
+      <td id="tripBoatName"><%= "#{trip.boat.name}" %></td>
+      <td id="editBoatButton"><%= link_to 'Edit', edit_trip_path(trip), class: "btn btn-primary" %>
       </td>
-      <td><%= link_to "Delete", trip_path(trip), class: "btn btn-primary", data: {:confirm => "Are you sure?"}, method: :delete %></td>
+      <td id="deleteBoatButton"><%= link_to "Delete", trip_path(trip), class: "btn btn-primary", data: {:confirm => "Are you sure?"}, method: :delete %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
-
-<div id="fullCalModal" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span> <span class="sr-only">close</span></button>
-                <h4 id="modalTitle" class="modal-title"></h4>
-            </div>
-            <div id="modalBoatName" class="modal-body"></div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary"><a id="eventUrl" target="_blank">Trip Page</a></button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<br>
-
-
-<script>
-$(document).ready(function() {
-  $('#calendar').fullCalendar({
-    events: '/trips.json',
-    eventClick: function(event, jsEvent, view) {
-      $("#modalTitle").html(event.title);
-      $("#modalBoatName").html(event.boat.name);
-      $("#eventUrl").attr('href', '/trips/' + event.id);
-      $("#fullCalModal").modal();
-    }
-  })
-});
-</script>
 

@@ -359,6 +359,7 @@ DEPENDENCIES
   high_voltage
   jbuilder (~> 2.5)
   jquery-rails
+  jquery-ui-rails
   launchy
   listen (>= 3.0.5, < 3.2)
   momentjs-rails

@@ -1,11 +1,12 @@
 class BoatsController < ApplicationController
+  
   before_action :authenticate_user!
   before_action :set_user
   before_action :set_boat, only: [:show, :edit, :update, :destroy]
  
 
   def index
-    @boats = @user.boats
+    @boats = @user.boats.all
     respond_to do |format|
       format.html { render 'index' }
       format.json { render json: @boats }
@@ -17,12 +18,9 @@ class BoatsController < ApplicationController
   end
 
   def show
-     respond_to do |format|
-      format.html { render 'index' }
-      format.json { render json: @boat, status: 200 }
-    end
-    
+    render json: @boat, status: 200 
   end
+
 
   def create
     @boat = @user.boats.create(boat_params)
@@ -30,9 +28,6 @@ class BoatsController < ApplicationController
   end
 
   def edit
-    if @boat.user != @user
-      redirect_to boats_path
-    end
   end
 
   def update
@@ -50,7 +45,6 @@ class BoatsController < ApplicationController
     end
   end
   
-  
   private
 
   def boat_params
@@ -59,6 +53,11 @@ class BoatsController < ApplicationController
 
   def set_boat
     @boat = Boat.find(params[:id])
+  end
+
+  def find_trip
+    set_boat
+    @trip = Trip.where(boat_id: @boat).first
   end
   
   def set_user

@@ -12,26 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require popper
 //= require bootstrap-sprockets
-//= require turbolinks
 //= require moment 
 //= require fullcalendar
 //= require fullcalendar/gcal
-//= require_tree .
+//= require_tree 
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-function eventCalendar() {
-  return $('#calendar').fullCalendar({});
-};
-function clearCalendar() {
-  $('#calendar').fullCalendar('delete');
-  $('#calendar').html('');
-};
-
-$(document).on('turbolinks:load', function () {
-  eventCalendar();
-});
-$(document).on('turbolinks:before-cache', clearCalendar);

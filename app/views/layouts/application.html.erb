@@ -10,18 +10,21 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header>
+    <div class="wrapper">
+   
+    <header class="header">
       <%= render 'layouts/navigation' %>
     </header>
-    <main>
-       <%= yield %>
+     <aside class="sidebar"></aside>
+    <main class="content">
+      <%= yield %>
     </main>
-
+   
+    <footer class="footer">
+      <br>
+      <small>&copy; 2019 Developed by Manuel Pissanos | <a href="https://github.com/mpissanos/boat_booker">GitHub <i class="fa fa-github"></i></a> </small>
+    </footer>
     
-<footer class="flex-container">
-  <br>
-  <small>&copy; 2019 Developed by Manuel Pissanos | <a href="https://github.com/mpissanos/boat_booker">GitHub <i class="fa fa-github"></i></a> </small>
-</footer>
-
+    </div>
   </body>
 </html>

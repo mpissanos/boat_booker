@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show]
   resources :boats
   
+  get '/clients', to: 'clients#index'
+  get '/clients/new', to: 'clients#new'  
+  post '/clients', to: 'clients#create'
+  
   resources :trips do
-    resources :clients 
+    resources :clients, shallow: true
   end
 
-  resources :clients, only: [:index, :show]
+  
 end
