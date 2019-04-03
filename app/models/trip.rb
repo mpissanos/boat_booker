@@ -4,7 +4,7 @@ class Trip < ApplicationRecord
   has_one :client, dependent: :destroy
   accepts_nested_attributes_for :client
 
-  validates_presence_of :location, :price, :passengers, :start_time, :end_time,
+  validates_presence_of :location, :price, :passengers, :start_time, :end_time
 
   # scope method for recent trips
 

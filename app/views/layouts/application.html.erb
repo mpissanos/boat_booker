@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
+   
   </head>
   <body>
     <div class="wrapper">
@@ -15,7 +16,9 @@
     <header class="header">
       <%= render 'layouts/navigation' %>
     </header>
-     <aside class="sidebar"></aside>
+     <aside class="sidebar">
+      <%= render 'layouts/side_nav' %>
+     </aside>
     <main class="content">
       <%= yield %>
     </main>

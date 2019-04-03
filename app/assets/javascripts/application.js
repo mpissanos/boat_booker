@@ -18,5 +18,7 @@
 //= require moment 
 //= require fullcalendar
 //= require fullcalendar/gcal
-//= require_tree 
+//= require boats
+//= require clients
+//= require trips
 

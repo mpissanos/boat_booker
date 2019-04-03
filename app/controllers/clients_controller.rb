@@ -26,6 +26,10 @@ class ClientsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @client, status: 200 }
+    end
   end
 
   def edit
@@ -34,7 +38,7 @@ class ClientsController < ApplicationController
  def update
     if @client.update_attributes(client_params)
         flash[:success] = "Client was successfully updated"
-        redirect_to @client
+        redirect_to '/clients'
       else
         flash[:error] = "Something went wrong"
         render 'edit'

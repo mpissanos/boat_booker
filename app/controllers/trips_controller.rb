@@ -10,8 +10,9 @@ class TripsController < ApplicationController
     @trip = @user.trips.build
     @client = @trip.build_client
     @boats = Boat.all
+    @boat = Boat.new
     respond_to do |format|
-      format.html { render 'index' }
+      format.html 
       format.json { render json: @trips }
     end
   end
@@ -20,26 +21,28 @@ class TripsController < ApplicationController
     @trip = @user.trips.build
     @client = @trip.build_client
     @boats = Boat.all
+    @boat = Boat.new
+    respond_to do |format|
+      format.html { render 'new', layout: false}
+    end
   end
 
   def create
     @trip = @user.trips.create(trip_params)
     respond_to do |format|
-      if @trip.save 
-        format.html { redirect_to @trip, notice: 'Trip has been successfully created!'}
-        format.js
-        format.json { render json: @trip }
-      else
-        format.html { render 'new' }
-        format.json { render json: @trip.errors, status: :unprocessable_entity }
-      end
+      format.html {redirect_to root_path}
+      format.js 
     end
   end
 
   def show
     @client = @trip.client
-    render json: @trip
-    
+    respond_to do |format|
+      format.html 
+      format.json { render json: @trip }
+      format.js
+    end
+  
   end
 
   def edit

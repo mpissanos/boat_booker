@@ -1,71 +1,45 @@
-<!--Finish implementing modal -->
+<a class="nav-item nav-link" id="new-boat" href="#" role="button">New Boat</a>
 
-
-<table class="table table-striped table-hover">
-  <thead>
+<div class="container">
+  <div class="table-responsive">
+  <table class="table table-striped table-hover" id="boat-table">
     <tr>
       <th>Boat Name</th>
       <th>Type</th>
       <th>Capacity</th>
-      <th colspan="3"></th>
+      <th>Upcoming Trips</th>
     </tr>
-  </thead>
-
-  <tbody id="boatList">
-  <% @boats.each do |boat|%> 
-    <tr>
-      <td><%= "#{boat.name}" %></td>
-      <td><%= "#{boat.boat_type}" %></td>
-      <td><%= "#{boat.capacity}" %></td>
-      <td><%= link_to 'Edit', edit_boat_path(boat), class: "btn btn-primary" %>
-      </td>
-      <div id="boat-<%=boat.id%>"></div>
-      <td><%= link_to "Delete", boat_path(boat), class: "btn btn-primary", data: {:confirm => "Are you sure?"}, method: :delete %></td>
-      <td>
-        <button class="js-more btn btn-secondary" data-id="<%=boat.id%>">Next Trip</button>
-      </td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-  <div id="tripInfo" title="">
-    <h1 id="tripDate"></h1>
-    <p id="tripLocation"></p>
-    <a id="tripUrl" href="#"></a>
+  </table>
+  
+  </div>
 </div>
 
+<div class="modal fade" id="newBoatModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Boat</h4>
+      </div>
+      <div class="modal-body">
+      <%= render 'boat_form' %>
+      </div>
+  </div>
+</div>
 
+   <div class="modal fade" id="newTripeModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create a New Trip</h4>
+        </div>
+        <div class="modal-body">
+          <p><%= render 'trips/form' %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
-
-<script type="text/javascript" charset="utf-8">
-$(function() {
-  $( "#tripInfo" ).dialog({
-    appendTo: "#tripInfo",
-      autoOpen: false,
-      show: {
-        effect: "blind",
-        duration: 1000
-      },
-      hide: {
-        effect: "explode",
-        duration: 500
-      }
-    });
-})
-
-  $(function() {
-    $(".js-more").on('click', function() {
-      $("#tripInfo").dialog("open")
-      let id = $(this).data('id')
-      $.get("/boats/" + id , function(data) {
-        $("#tripDate").text("Date - " + data["trips"][0]["date"])
-        $("#tripLocation").text("Location - " + data["trips"][0]["location"])
-        $("#tripUrl").attr("href", data['trips'][0]['url'])
-        $("#tripUrl").text("Go to Trip Page")
-      })
-    })
-  })
-</script>
-
+   
