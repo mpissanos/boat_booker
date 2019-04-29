@@ -1,9 +1,27 @@
 $(document).ready(function () {
   loadTrips();
   renderCalendar();
-  attachEventListeners()
+  attachEventListeners();
   $("#trips-table").hide();
 });
+
+function loadTrips() {
+  $.getJSON("/trips.json", function (data) {
+    let trip_data = "";
+    $.each(data, function (key, value) {
+      let id = value.id
+      trip_data += '<tr>';
+      trip_data += '<td>' + value.date + '</td>';
+      trip_data += '<td>' + value.location + '</td>';
+      trip_data += '<td>' + value.boat.name + '</td>';
+      trip_data += "<td><a href='/trips/" + id + "/edit' class='btn btn-primary'> Edit </a></td>";
+      trip_data += "<td><a href='/trips/'" + id + "class='btn btn-primary' data-confirm='Are you sure?' method='delete'>Delete</a></td>";
+      trip_data += '</tr>';
+    })
+    $('#trips-table').append(trip_data)
+  })
+}
+
 
 function renderCalendar() {
   $('#calendar').fullCalendar({
@@ -24,13 +42,13 @@ function attachEventListeners() {
   });
 
   $(".new-trip").on('click', function () {
-    let newPage = $.get('trips/new', function (page) {
+    $.get('trips/new', function (page) {
       $(".content").html(page)
     })
   })
 
   $("#new-boat").on('click', function () {
-    let newPage = $.get('boats/new', function (page) {
+    $.get('boats/new', function (page) {
       $(".content").html(page)
     })
   })
@@ -49,7 +67,6 @@ class Trip {
     this.data = json;
 
   }
-
   renderTable() {
     let html = `<tr>
       <td id="tripDate"> ${this.date} </td>
@@ -63,19 +80,3 @@ class Trip {
   }
 }
 
-function loadTrips() {
-  $.getJSON("/trips.json", function (data) {
-    let trip_data = "";
-    $.each(data, function (key, value) {
-      let id = value.id
-      trip_data += '<tr>';
-      trip_data += '<td>' + value.date + '</td>';
-      trip_data += '<td>' + value.location + '</td>';
-      trip_data += '<td>' + value.boat.name + '</td>';
-      trip_data += "<td><a href='/trips/" + id + "/edit' class='btn btn-primary'> Edit </a></td>";
-      trip_data += "<td><a href='/trips/'" + id + "class='btn btn-primary' data-confirm='Are you sure?' method='delete'>Delete</a></td>";
-      trip_data += '</tr>';
-    })
-    $('#trips-table').append(trip_data)
-  })
-}
