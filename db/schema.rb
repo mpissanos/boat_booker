@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_03_13_075131) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "boats", force: :cascade do |t|
     t.string "boat_type"
     t.string "name"
@@ -43,7 +46,7 @@ ActiveRecord::Schema.define(version: 2019_03_13_075131) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.time "start_time"
-    t.time "end_time"
+    t.datetime "end_time"
     t.date "date"
     t.boolean "complete", default: false, null: false
   end

@@ -54,5 +54,9 @@ group :test do
   gem 'launchy'
 end
 
+group :production do
+  gem 'pg'
+end
+
 
 

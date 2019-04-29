@@ -1,9 +1,9 @@
 development:
   adapter: postgresql
-  host: localhost
   database: my_database_development
   pool: 5
   timeout: 5000
+
 test:
   adapter: postgresql
   database: my_database_test
