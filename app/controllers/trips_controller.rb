@@ -1,30 +1,48 @@
 class TripsController < ApplicationController
-before_action :authenticate_user!
-before_action :set_user
-before_action :set_trip, only: [:destroy, :edit, :show, :update]
+  
+  before_action :authenticate_user!
+  before_action :set_user
+  before_action :set_trip, only: [:destroy, :edit, :show, :update]
 
     
   def index
     @trips = Trip.all
+    @trip = @user.trips.build
+    @client = @trip.build_client
+    @boats = Boat.all
+    @boat = Boat.new
+    respond_to do |format|
+      format.html 
+      format.json { render json: @trips }
+    end
   end
 
   def new
     @trip = @user.trips.build
     @client = @trip.build_client
-    @boats = @user.boats
+    @boats = Boat.all
+    @boat = Boat.new
+    respond_to do |format|
+      format.html { render 'new', layout: false}
+    end
   end
 
   def create
     @trip = @user.trips.create(trip_params)
-    if @trip.save 
-      redirect_to trip_path(@trip)
-    else
-      render 'trips/new'
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js 
     end
   end
 
   def show
     @client = @trip.client
+    respond_to do |format|
+      format.html 
+      format.json { render json: @trip }
+      format.js
+    end
+  
   end
 
   def edit
@@ -45,7 +63,6 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
       end
   end
   
-
   def destroy
     @trip.destroy
     if @trip.destroy 
@@ -62,14 +79,18 @@ before_action :set_trip, only: [:destroy, :edit, :show, :update]
 
   def trip_params
     params.require(:trip).permit(
-    :trip_time,
     :location,
-    :trip_length,
     :price,
     :passengers,
     :date,
+    :start_time,
+    :end_time,
     :boat_id,
-    client_attributes: [:name, :email, :phone_number],
+    client_attributes: [
+        :name, 
+        :email, 
+        :phone_number
+    ]
     )
   end
 

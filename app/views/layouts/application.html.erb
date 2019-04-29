@@ -1,20 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= content_for?(:title) ? yield(:title) : "Boat Booker" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Boat Booker" %>">
+ 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
     <%= csrf_meta_tags %>
+   
   </head>
   <body>
-    <header>
+    <div class="wrapper">
+   
+    <header class="header">
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
-       <%= render 'layouts/messages' %>
-       <%= yield %>
+     <aside class="sidebar">
+      <%= render 'layouts/side_nav' %>
+     </aside>
+    <main class="content">
+      <%= yield %>
     </main>
+   
+    <footer class="footer">
+      <br>
+      <small>&copy; 2019 Developed by Manuel Pissanos | <a href="https://github.com/mpissanos/boat_booker">GitHub <i class="fa fa-github"></i></a> </small>
+    </footer>
+    
+    </div>
   </body>
 </html>

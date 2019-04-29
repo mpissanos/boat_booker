@@ -3,22 +3,16 @@ Rails.application.routes.draw do
   root to: 'trips#index'
   
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-
-  namespace :admin do
-    resources :users
-    root to: "users#index"
-  end
-  
   resources :users, only: [:index, :show]
-
-
   resources :boats
-
+  
+  get '/clients', to: 'clients#index'
+  get '/clients/new', to: 'clients#new'  
+  post '/clients', to: 'clients#create'
+  
   resources :trips do
-    resources :clients 
+    resources :clients, shallow: true
   end
 
-    resources :clients, only: [:index, :show]
   
-
 end

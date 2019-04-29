@@ -1,46 +1,66 @@
 class BoatsController < ApplicationController
+  
   before_action :authenticate_user!
   before_action :set_user
   before_action :set_boat, only: [:show, :edit, :update, :destroy]
+  before_action :set_trips, only: [:show, :update, :edit]
  
 
   def index
-    @boats = @user.boats
+    @boats = Boat.all
+    @boat = Boat.new
+    @trip = Trip.new
+    respond_to do |format|
+      format.html 
+      format.json { render json: @boats }
+    end
   end
 
   def new 
     @boat = Boat.new
+    @trip = Trip.new
+    respond_to do |format|
+      format.html { render 'new' }
+    end
   end
 
   def show
-    
+    @boat = Boat.new
+    respond_to do |format|
+      format.html 
+      format.json { render json: @boat }
+    end
   end
+
 
   def create
     @boat = @user.boats.create(boat_params)
-    if @boat.save!
-      flash[:success] = "Object successfully created"
-      redirect_to boat_path(@boat)
-    else
-      flash[:error] = "Something went wrong"
-      render 'new'
+    respond_to do |format|
+      format.json { render json: @boat, status: 201}
+      format.js
+      format.html
     end
   end
 
   def edit
-    if @boat.user != @user
-      redirect_to boats_path
-    end
   end
 
   def update
-    if @boat.update_attributes(boat_params)
-        flash[:success] = "Object was successfully updated"
-        redirect_to @boat
-      else
-        flash[:error] = "Something went wrong"
-        render 'edit'
+    @boat.update(boat_params)
+      respond_to do |format|
+        format.html { rediect_to boat_path @boat}
+        format.json { render json: @boat}
       end
+  end
+
+  def destroy
+    if @boat.destroy
+      flash[:success] = 'Object was successfully deleted.'
+      redirect_to boats_url
+    else
+      flash[:error] = 'Something went wrong'
+      redirect_to boats_url
+    end
   end
   
   private
@@ -51,6 +71,11 @@ class BoatsController < ApplicationController
 
   def set_boat
     @boat = Boat.find(params[:id])
+  end
+
+  def set_trips
+    @trips = @boat.trips.find_by(params[:boat_id])
+    
   end
   
   def set_user

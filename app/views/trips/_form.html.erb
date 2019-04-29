@@ -1,21 +1,23 @@
-<%= simple_form_for @trip do |f| %>
-  <%= f.input   :date, as: :date, html5: true  %>
-  <%= f.input  :location %>
-  <%= f.input  :trip_length, collection: 1..8 %>
-  <%= f.input  :price %>
-  <%= f.input  :passengers, collection: 1..10 %>
 
-  
+<div id="tripForm">
+  <%= simple_form_for @trip do |f| %>
+    <h2>Trip Details</h2>
+    <%= f.input   :date, input_html: { id: :datepicker } %>
+    <%= f.input  :location %>
+    <%= f.input  :start_time, as: :time, html5: true %>
+    <%= f.input  :end_time, as: :time, html5: true %>
+    <%= f.input  :price %>
+    <%= f.input  :passengers, collection: 1..10 %>
+    <%= f.input :boat_id, collection: @boats, input_html: { multiple: false, id: :boat_id } %>
 
-  <%= f.input :boat_id, collection: @boats, input_html: { multiple: false, id: :boat_id } %>
-  
-  <p>Client Information</p>
- 
-    <%= f.simple_fields_for :client do |c| %> 
-      <%= c.input :name %>
-      <%= c.input :email %>
-      <%= c.input :phone_number %>
+    <h2>Client Information</h2> 
+    
+    <%= f.simple_fields_for :client do |tc| %> 
+        <%= tc.input :name %>
+        <%= tc.input :email %>
+        <%= tc.input :phone_number %>      
     <% end %>
-  <%= f.button :submit %>
-<% end %>
+      <%= f.button :submit %>
+  <% end %>
+</div>
 

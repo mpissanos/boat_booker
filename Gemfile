@@ -14,14 +14,18 @@ gem 'simple_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'administrate'
 gem "bootstrap", ">= 4.1.2"
+gem 'font-awesome-sass'
 gem 'bourbon'
 gem 'devise'
 gem 'high_voltage'
 gem 'jquery-rails'
-gem "simple_calendar", "~> 2.0"
+gem 'jquery-ui-rails'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 gem 'american_date'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

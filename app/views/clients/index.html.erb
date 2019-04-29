@@ -1,16 +1,40 @@
-<div class="container">
-  <div class="row">
-    <h3>Current Clients</h3>
-    <div class="column">
-      <table class="table">
-        <tbody>
-          <% @clients.each do |client| %>
-            <tr>
-              <%= client.name%>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<h1>Clients</h1>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+<% @clients.each do |client|%> 
+  <tr id="client-<%=client.id%>">
+    <td><strong><%= "#{client.name}" %></strong></td>
+    <td><%= link_to 'Edit', edit_client_path(client), class: "edit-client btn btn-primary" %>
+    </td>
+    <td><%= link_to "Delete", client_path(client), class: "delete-client btn btn-primary", data: {:confirm => "Are you sure?"}, method: :delete %></td>
+    <td>
+      <button class="more-info btn btn-secondary" data-id="<%=client.id%>">Trips</button>
+    </td>
+    
+  </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div id="client-info"></div>
+
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+   $(".more-info").on('click', function (){
+     $("#client-info").text("")
+     let id = $(this).data("id")
+     $.get("/clients/" + id , function (data) {
+       
+       $("#client-info").html(data["name"])
+     })
+   })
+  })
+</script>

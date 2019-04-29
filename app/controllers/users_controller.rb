@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  
   before_action :authenticate_user!
   before_action :set_user, only: [:show, :update, :destroy, :edit]
   
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    
     if @user.update_attributes(secure_params)
       redirect_to users_path, :notice => "User updated."
     else
@@ -29,18 +29,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    
     @user.destroy
     redirect_to users_path, :notice => "User deleted."
   end
 
   private
-
-  def admin_only
-    unless current_user.admin?
-      redirect_to root_path, :alert => "Access denied."
-    end
-  end
 
   def secure_params
     params.require(:user).permit(:role)

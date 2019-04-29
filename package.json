@@ -1,5 +1,8 @@
 {
   "name": "boat_booker",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "tablesorter": "^2.31.1"
+  }
 }
