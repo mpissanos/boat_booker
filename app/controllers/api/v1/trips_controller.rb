@@ -13,10 +13,7 @@ module Api
         @client = @trip.build_client
         @boats = Boat.all
         @boat = Boat.new
-        respond_to do |format|
-          format.html 
-          format.json { render json: @trips }
-        end
+        render json: @trip
       end
 
       def new
@@ -24,28 +21,17 @@ module Api
         @client = @trip.build_client
         @boats = Boat.all
         @boat = Boat.new
-        respond_to do |format|
-          format.html { render 'new'}
-          format.js
-        end
+        render json: @trip
       end
 
       def create
         @trip = @user.trips.create(trip_params)
-        respond_to do |format|
-          format.html {redirect_to root_path}
-          format.js 
-        end
+        render json: @trip
       end
 
       def show
         @client = @trip.client
-        respond_to do |format|
-          format.html 
-          format.json { render json: @trip }
-          format.js
-        end
-      
+        render json: @trip
       end
 
       def edit
@@ -53,16 +39,17 @@ module Api
           redirect_to trips_path
         else
           @boats = @user.boats
+          render json: @trip
         end
       end
       
       def update
         if @trip.update_attributes(trip_params)
             flash[:success] = "Object was successfully updated"
-            redirect_to @trip
+            render json: @trip
           else
             flash[:error] = "Something went wrong"
-            render 'edit'
+            redirect_to edit
           end
       end
       

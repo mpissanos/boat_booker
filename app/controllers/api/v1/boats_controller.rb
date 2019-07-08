@@ -12,10 +12,7 @@ module Api
         @boats = Boat.all
         @boat = Boat.new
         @trip = Trip.new
-        respond_to do |format|
-          format.html 
-          format.json { render json: @boats }
-        end
+        re
       end
 
       def new 
