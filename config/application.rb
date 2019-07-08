@@ -8,7 +8,8 @@ Bundler.require(*Rails.groups)
 
 module BoatBooker
   class Application < Rails::Application
-
+    config.api_only = true
+    
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
@@ -18,6 +19,13 @@ module BoatBooker
         controller_specs: false,
         request_specs: false
       g.fixture_replacement :factory_bot, dir: "spec/factories"
+    end
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
     end
 
     # Initialize configuration defaults for originally generated Rails version.

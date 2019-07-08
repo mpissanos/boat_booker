@@ -5,12 +5,6 @@ class Trip < ApplicationRecord
   accepts_nested_attributes_for :client
 
   validates_presence_of :location, :price, :passengers, :start_time, :end_time
-
-  # scope method for recent trips
-
-  # def self.set_boat_id
-
-  # end
   
 
   def self.recent_trips(number)
