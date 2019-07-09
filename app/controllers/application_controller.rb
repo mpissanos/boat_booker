@@ -1,5 +1,12 @@
 class ApplicationController < ActionController::API
-  def after_sign_in_path_for(resource)
-    request.env['omniauth.origin'] || root_path
+  def current_user
+    return unless session[:user_id]
+    @current_user ||= User.find(session[:user_id])
   end
+
+ ## Skip sessions and cookies for Rails API
+#  def skip_session
+#     request.session_options[:skip] = true
+#  end
+
 end

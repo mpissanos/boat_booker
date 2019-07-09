@@ -2,7 +2,7 @@ module Api
   module V1
     class TripsController < BaseApiController
       
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     before_action :set_user
     before_action :set_trip, only: [:destroy, :edit, :show, :update]
 

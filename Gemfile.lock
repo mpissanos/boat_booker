@@ -63,7 +63,7 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.5.1.1)
       execjs
-    bcrypt (3.1.12)
+    bcrypt (3.1.13)
     better_errors (2.5.1)
       coderay (>= 1.0.0)
       erubi (>= 1.0.0)
@@ -94,12 +94,6 @@ GEM
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
     debug_inspector (0.0.3)
-    devise (4.6.2)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0, < 6.0)
-      responders
-      warden (~> 1.2.3)
     diff-lcs (1.3)
     erubi (1.8.0)
     execjs (2.7.0)
@@ -179,7 +173,6 @@ GEM
     omniauth-oauth2 (1.6.0)
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
-    orm_adapter (0.5.0)
     public_suffix (3.1.0)
     puma (3.12.1)
     rack (2.0.7)
@@ -216,9 +209,6 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.5.1)
-    responders (2.4.1)
-      actionpack (>= 4.2.0, < 6.0)
-      railties (>= 4.2.0, < 6.0)
     rspec-core (3.8.0)
       rspec-support (~> 3.8.0)
     rspec-expectations (3.8.3)
@@ -276,8 +266,6 @@ GEM
     tilt (2.0.9)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    warden (1.2.8)
-      rack (>= 2.0.6)
     web-console (3.7.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -299,13 +287,13 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
   administrate
+  bcrypt
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
   byebug
   capybara (>= 2.15)
   database_cleaner
-  devise
   factory_bot_rails
   faker
   jbuilder (~> 2.5)

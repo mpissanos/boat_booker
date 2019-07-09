@@ -2,7 +2,7 @@ module Api
   module V1
     class BoatsController < BaseApiController
     
-    before_action :authenticate_user!
+    # before_action :authenticate_user!
     before_action :set_user
     before_action :set_boat, only: [:show, :edit, :update, :destroy]
     before_action :set_boat_trips, only: [:show, :update, :edit]

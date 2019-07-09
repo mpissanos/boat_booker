@@ -8,7 +8,12 @@ Bundler.require(*Rails.groups)
 
 module BoatBooker
   class Application < Rails::Application
-    config.api_only = true
+     config.api_only = true
+    # config.middleware.use ActionDispatch::Flash
+    # config.middleware.use ActionDispatch::Cookies
+    # config.middleware.use ActionDispatch::Session::CookieStor
+
+    # config.middleware.use ActionDispatch::Session::CookieStore
     
     config.generators do |g|
       g.test_framework :rspec,
@@ -26,6 +31,7 @@ module BoatBooker
         origins '*'
         resource '*', headers: :any, methods: [:get, :post, :options]
       end
+
     end
 
     # Initialize configuration defaults for originally generated Rails version.

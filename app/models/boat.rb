@@ -4,7 +4,7 @@ class Boat < ApplicationRecord
   has_many :clients, through: :trips
   has_one_attached :avatar
 
-    validates_presence_of :boat_type, :name, :capacity
+  validates_presence_of :boat_type, :name, :capacity
     
  def self.within_capacity?
   @boat.capacity >= @trip.passengers

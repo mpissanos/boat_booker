@@ -8,9 +8,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'bcrypt'
 gem 'administrate'
 gem 'rack-cors', :require => 'rack/cors'
-gem 'devise'
 gem 'momentjs-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
