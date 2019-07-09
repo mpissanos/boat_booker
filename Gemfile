@@ -9,6 +9,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'simple_form'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt'
+gem 'jwt'
 gem 'administrate'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'momentjs-rails'
