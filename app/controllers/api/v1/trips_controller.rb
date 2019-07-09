@@ -34,7 +34,7 @@ module Api
         
       def update
         if @trip.update_attributes(trip_params)
-            render json: @trip
+          render json: @trip
         else
           render json: @trip.errors, status: :unproccesable_entity
         end
