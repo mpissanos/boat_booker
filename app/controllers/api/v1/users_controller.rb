@@ -2,8 +2,8 @@ module Api
   module V1
     class UsersController < BaseApiController
       
-    # before_action :authenticate_user!
-    before_action :set_user, only: [:show, :update, :destroy, :edit]
+    before_action :authorize_request, except: :create
+    before_action :find_user, except: %i[create index]
       
       def index
         @users = User.all
@@ -43,8 +43,10 @@ module Api
         params.require(:user).permit(:role)
       end
 
-      def set_user
-        @user = User.find(params[:id])
+      def find_user
+        @user = User.find_by_username!(params[:_username])
+        rescue ActiveRecord::RecordNotFound
+          render json: { errors: 'User not found' }, status: :not_found
       end
     end
   end
