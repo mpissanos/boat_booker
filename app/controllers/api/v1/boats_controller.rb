@@ -12,51 +12,35 @@ module Api
         @boats = Boat.all
         @boat = Boat.new
         @trip = Trip.new
-        re
-      end
-
-      def new 
-        @boat = Boat.new
-        @trip = Trip.new
-        if current_user
-        respond_to do |format|
-          format.html { render 'new' }
-        end
-      else
-        redirect_to new_session_path
-      end
+        render json: @boats
       end
 
       def show
-        @boat = Boat.new
-        respond_to do |format|
-          format.html 
-          format.json { render json: @boat }
-        end
+        render json: @boat
       end
 
 
       def create
-        @boat = @user.boats.create(boat_params)
-        render json: @boat
-      end
-
-      def edit
-        @boat.avatar.attach(params[:avatar])
+        @boat = @user.boats.new(boat_params)
+        if @boat.save
+        render json: @boat, status: :created
+        else
+          render json: @boat.errors, status: :unporcessible_entity
       end
 
       def update
-        @boat.update(boat_params)
+        if @boat.update(boat_params)
         render json: @boat
+        else
+          render json: @boat.errors, status: :unporcessible_entity
       end
 
       def destroy
+        @boat.destroy
         if @boat.destroy
-          flash[:success] = 'Object was successfully deleted.'
-          redirect_to boats_url
+          head :no_content, status: :ok
         else
-          flash[:error] = 'Something went wrong'
-          redirect_to boats_url
+          render json: @boat.errors, status: :unporcessible_entity
         end
       end
       
