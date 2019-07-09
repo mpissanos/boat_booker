@@ -23,16 +23,16 @@ module Api
       def create
         @boat = @user.boats.new(boat_params)
         if @boat.save
-        render json: @boat, status: :created
+          render json: @boat, status: :created
         else
-          render json: @boat.errors, status: :unporcessible_entity
+          render json: @boat.errors, status: :unprocessable_entity
       end
 
       def update
         if @boat.update(boat_params)
         render json: @boat
         else
-          render json: @boat.errors, status: :unporcessible_entity
+          render json: @boat.errors, status: :unprocessable_entity
       end
 
       def destroy
@@ -40,7 +40,7 @@ module Api
         if @boat.destroy
           head :no_content, status: :ok
         else
-          render json: @boat.errors, status: :unporcessible_entity
+          render json: @boat.errors, status: :unprocessable_entity
         end
       end
       

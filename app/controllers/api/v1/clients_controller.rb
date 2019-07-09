@@ -6,12 +6,11 @@ module Api
       before_action :set_client, only: [:show, :destroy, :edit, :update]
 
       def index
-      @clients = Client.all
-      render json: @clients
+        @clients = Client.all
+        render json: @clients
       end
-
-      def new
-        @client = Client.new
+       
+      def show
         render json: @client
       end
 
@@ -20,35 +19,24 @@ module Api
         if @client.save
           render json: @client
         else
-          flash[:error] = "Something went wrong"
+          render json: @client.errors, status: :unprocessable_entity
+        end
+      end
+      
+      def update
+        if @client.update_attributes(client_params)
+          render json: @client
+        else
+          render json: @client.errors, status: :unprocessable_entity
         end
       end
 
-      def show
-        render json: @client
-      end
-
-      def edit
-        render json: @client
-      end
-      
-    def update
-        if @client.update_attributes(client_params)
-            render json: @client
-          else
-            flash[:error] = "Something went wrong"
-            render 'edit'
-          end
-      end
-
-
       def destroy
-        if @client.destroy!
-          flash[:success] = 'Object was successfully deleted.'
-          redirect_to clients_url
+        @client.destroy
+        if @client.destroy
+          head :no_content, status: :ok
         else
-          flash[:error] = 'Something went wrong'
-          redirect_to clients_url
+          render json: @client.errors, status: :unprocessable_entity
         end
       end
 
