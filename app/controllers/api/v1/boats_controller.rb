@@ -29,8 +29,8 @@ module Api
       end
 
       def update
-        if @boat.update(boat_params)
-        render json: @boat
+        if @boat.update_attributes(boat_params)
+          render json: @boat
         else
           render json: @boat.errors, status: :unprocessable_entity
       end
